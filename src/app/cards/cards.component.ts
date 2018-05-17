@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 import { Card } from '../card';
 import { CardSingle } from '../cardSingle';
 import { CardCondition } from '../condition';
+import { CardService } from '../card.service';
 
 @Component({
   selector: 'app-cards',
@@ -10,29 +13,44 @@ import { CardCondition } from '../condition';
 })
 export class CardsComponent implements OnInit {
 
-  imgurl = 'http://localhost:5000/cardimage/001ca412629180934cffd4b493d55a5c1e5f311c.jpeg';
+  imgurl: string;
+  card: Card = {
+    cid: '',
+    name: '',
+    type: '',
+    rarity: '',
+    imgpath: '',
+    setname: '',
+    setcode: ''
+  }
 
   inv: CardSingle = {
+    cid: '',
+    id: 0,
     price: '',
     cond: 0,
     indeck: false,
     isfoil: false
   }
 
-  card: Card = {
-    cid: '001ca412629180934cffd4b493d55a5c1e5f311c',
-    name: 'Wall of Air',
-    type: 'Creature - Wall',
-    rarity: 'Uncommon',
-    imgpath: '001ca412629180934cffd4b493d55a5c1e5f311c.jpeg',
-    setcode: 'LEA',
-    setname: 'Alpha'
-  };
-
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private cardService: CardService,
+    private location: Location
+  ) { }
 
   ngOnInit() {
+    this.loadCard();
+  }
 
+  loadCard(): void {
+    const cid = this.route.snapshot.paramMap.get('id');
+    this.cardService.setCurrentCid(cid);
+    this.cardService.getCard(cid)
+      .subscribe(card => {
+        this.card = card;
+        this.imgurl = 'http://localhost:5000/cardimage/' + this.card.imgpath;
+      });
   }
 
 }

@@ -1,3 +1,48 @@
-<p>
-  inventory works!
-</p>
+<h1>Inventory List</h1>
+<input type=button value="Refresh" (click)="refresh()">
+<h2>Stock</h2>
+<div *ngIf="cardList">
+  <div class="row" *ngFor="let card of cardList['stock']; index as i">
+    <span class="id">{{card.id}}</span>
+    <span class="name">{{card.name}}</span>
+    <span class="condition">{{card.cond}}</span>
+    <span class="price">{{card.price | currency}}</span>
+    <span class="edit">
+      <input type=button value="..." (click)="setCard(i, 'stock')">
+    </span>
+    <span class="delete">
+      <input type=button value="X" (click)="deleteCard(card.id)">
+    </span>
+  </div>
+</div>
+<h2>Foil</h2>
+<div *ngIf="cardList">
+  <div class="row" *ngFor="let card of cardList['foil']; index as i">
+    <span class="id">{{card.id}}</span>
+    <span class="name">{{card.name}}</span>
+    <span class="condition">{{card.cond}}</span>
+    <span class="price">{{card.price | currency}}</span>
+    <span class="edit">
+      <input type=button value="..." (click)="setCard(i, 'foil')">
+    </span>
+    <span class="delete">
+      <input type=button value="X" (click)="deleteCard(card.id)">
+    </span>
+  </div>
+</div>
+<h2>In Decks</h2>
+<div *ngIf="cardList">
+  <div class="row" *ngFor="let card of cardList['deck']; index as i">
+    <span class="id">{{card.id}}</span>
+    <span class="name">{{card.name}}</span>
+    <span class="condition">{{card.cond}}</span>
+    <span class="price">{{card.price | currency}}</span>
+    <span class="edit">
+      <input type=button value="..." (click)="setCard(i, 'deck')">
+    </span>
+    <span class="delete">
+      <input type=button value="X" (click)="deleteCard(card.id)">
+    </span>
+  </div>
+</div>
+<div style="margin-bottom: 100px"></div>

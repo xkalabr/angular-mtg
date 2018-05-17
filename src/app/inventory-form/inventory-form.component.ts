@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CardSingle } from '../cardSingle';
-import { CardCondition } from '../condition'
+import { CardCondition } from '../condition';
+import { CardService } from '../card.service';
 
 @Component({
   selector: 'app-inventory-form',
@@ -13,21 +14,48 @@ export class InventoryFormComponent implements OnInit {
   
   conditions: CardCondition[];
 
-  constructor() { }
+  constructor(
+    private cardService: CardService
+  ) { }
 
-  getConditions(): CardCondition[] {
-    return new Array(
-      { id: 0, val: 'Unset'},
-      { id: 10, val: 'NM' },
-      { id: 20, val: 'LP' },
-      { id: 30, val: 'MP' },
-      { id: 40, val: 'HP' },
-      { id: 50, val: 'DM' }
-    );
+  addOrEdit(): string {
+    if (this.entry.id != 0) {
+      return 'Edit';
+    } else {
+      return 'Add';
+    }
+  }
+
+  doCancel() {
+    this.entry = {
+      cid: '',
+      id: 0,
+      price: '',
+      cond: 0,
+      indeck: false,
+      isfoil: false
+    }
+  }
+
+  doAddOrEdit(): void {
+    this.entry.cid = this.cardService.getCurrentCid();
+    if (this.entry.id == 0) {
+      this.cardService.addCard(this.entry)
+        .subscribe();
+    } else {
+      this.cardService.editCard(this.entry)
+        .subscribe();
+    }
+    this.doCancel();
+  }
+
+  getConditions(): void {
+    this.cardService.getCardConditions()
+      .subscribe(result => this.conditions = result);
   }
 
   ngOnInit() {
-    this.conditions = this.getConditions();
+    this.getConditions();
   }
 
 }

@@ -1,7 +1,30 @@
 h2 {
     text-align: center;
+    margin-bottom: 20px;
 }
 
 label {
-    margin-left: 10%;
+    display: block;
+    margin-left: 70px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.cbox {
+    display: inline;
+}
+
+.cbox-right {
+    display: inline;
+    margin-left: 20px;
+}
+
+.cbox-container {
+    display: block;
+}
+
+.buttons {
+    margin-left: 70px;
+    margin-top: 25px;
+    margin-bottom: 25px;
 }

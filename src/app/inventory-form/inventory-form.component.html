@@ -1,6 +1,9 @@
-<h2>Add to Inventory</h2>
+<h2>{{addOrEdit()}} Inventory</h2>
+<label [style.visibility]="entry.id != 0 ? 'visible' : 'hidden'">ID:
+  <span>{{entry.id}}</span>
+</label>
 <label>Price:
-  <input [(ngModel)]="entry.price">
+  <input [(ngModel)]="entry.price" [attr.size]="6">
 </label>
 <label>Condition: 
   <select [(ngModel)]="entry.cond">
@@ -11,10 +14,15 @@
       </option>
   </select>
 </label>
-<br>
-<label>In Deck
-  <input [(ngModel)]="entry.indeck" type="checkbox" />
-</label>
-<label>Foil
-  <input [(ngModel)]="entry.isfoil" type="checkbox" />
-</label>
+<div class="cbox-container">
+  <label class="cbox">In Deck
+    <input [(ngModel)]="entry.indeck" type="checkbox" />
+  </label>
+  <label class="cbox-right">Foil
+    <input [(ngModel)]="entry.isfoil" type="checkbox" />
+  </label>
+</div>
+<div class="cbox-container buttons">
+  <input class="cbox" type=button value="{{addOrEdit()}}" (click)="doAddOrEdit()">
+  <input class="cbox-right" type=button value="Cancel" (click)="doCancel()">
+</div>

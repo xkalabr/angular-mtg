@@ -1,0 +1,35 @@
+.row {
+    display: block;
+}
+
+.id {
+    width: 5%;
+    float: left;
+}
+
+.name {
+    width: 65%;
+    float: left;
+}
+
+.condition {
+    width: 10%;
+    float: left;
+}
+
+.price {
+    width: 10%;
+    float: left;
+}
+
+.edit {
+    width: 5%;
+    float: left;
+    margin-bottom: 20px;
+}
+
+.delete {
+    width: 5%;
+    float: left;
+    margin-bottom: 20px;
+}
