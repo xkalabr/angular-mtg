@@ -1,0 +1,20 @@
+<h2>Add to Inventory</h2>
+<label>Price:
+  <input [(ngModel)]="entry.price">
+</label>
+<label>Condition: 
+  <select [(ngModel)]="entry.cond">
+      <option *ngFor="let cond of conditions" 
+        [value]="cond.id" 
+        [attr.selected]="entry.cond==cond.id ? true : null">
+        {{cond.val}}
+      </option>
+  </select>
+</label>
+<br>
+<label>In Deck
+  <input [(ngModel)]="entry.indeck" type="checkbox" />
+</label>
+<label>Foil
+  <input [(ngModel)]="entry.isfoil" type="checkbox" />
+</label>
