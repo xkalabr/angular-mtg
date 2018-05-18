@@ -8,13 +8,16 @@ import { CardsComponent } from './cards/cards.component';
 import { InventoryComponent } from './inventory/inventory.component';
 import { InventoryFormComponent } from './inventory-form/inventory-form.component';
 import { AppRoutingModule } from './app-routing.module';
+import { SearchComponent } from './search/search.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     AppComponent,
     CardsComponent,
     InventoryComponent,
-    InventoryFormComponent
+    InventoryFormComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

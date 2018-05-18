@@ -46,9 +46,18 @@ export class CardService {
     return this.http.get<CardSingles>(url);
   }
 
+  getSets(): Observable<any> {
+    const url = this.cardsUrl + '/cardsets';
+    return this.http.get(url);
+  }
+
+  getSetList(id: string): Observable<any> {
+    const url = this.cardsUrl + '/setinventory/' + id;
+    return this.http.get(url);
+  }
+
   addCard(card: CardSingle): Observable<any> {
     const url = this.cardsUrl + '/card/';
-    console.log("Trying to add: ", card);
     return this.http.post<CardSingle>(url, card, httpOptions);
   }
 
@@ -60,6 +69,11 @@ export class CardService {
   removeCard(id: number): Observable<any> {
     const url = this.cardsUrl + '/card/' + id;
     return this.http.delete(url);
+  }
+
+  search(term: string): Observable<any> {
+    const url = this.cardsUrl + '/cardsearch/' + term;
+    return this.http.get(url);
   }
 
 }

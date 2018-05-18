@@ -1,0 +1,37 @@
+.searchbar {
+    display: block;
+}
+
+.sbox {
+    float: left;
+    width: 50%;
+}
+
+.row {
+    display: block;
+}
+
+.id {
+    width: 8%;
+    float: left;
+}
+
+.name {
+    width: 47%;
+    float: left;
+}
+
+.condition {
+    width: 38%;
+    float: left;
+}
+
+.price {
+    width: 7%;
+    float: left;
+}
+
+.setlist {
+    margin-top: 70px;
+    margin-bottom: 100px;
+}

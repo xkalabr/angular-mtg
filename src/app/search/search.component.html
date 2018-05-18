@@ -1,0 +1,39 @@
+<div class="searchbar">
+  <div class="sbox">
+    <h2 style="margin-left:120px">List by Set</h2>
+    <label>Set: 
+      <select [(ngModel)]="selectedSet">
+        <option *ngFor="let set of sets"
+          [value]="set.code">
+          {{set.name}}
+        </option>
+      </select>
+      <input type=button value="Go" style="margin-left: 20px" (click)="listSet()">
+      <input type=button value="Clear" style="margin-left: 10px" (click)="listClear()">
+    </label>
+  </div>
+  <div class="sbox">
+    <h2 style="margin-left:120px">Search by Card</h2>
+    <label>Card Name:
+      <input [(ngModel)]="searchterm">
+    </label>
+    <input type=button value="Go" (click)="searchCards()">
+  </div>
+</div>
+<div class="setlist" style="clear: both;">
+  <div *ngIf="setList">
+    <div class="row" *ngFor="let card of setList">
+      <span class="id">{{card.num}}</span>
+      <a href="/card/{{card.cid}}" class="name">{{card.name}}</a>
+      <span class="condition">{{card.type}}</span>
+      <span class="price">{{card.price | currency}}</span>
+    </div>
+  </div>
+  <div *ngIf="searchList">
+    <div class="row" *ngFor="let card of searchList">
+      <a href="/card/{{card.cid}}" class="name">{{card.name}}</a>
+      <span style="width: 40%">{{card.setname}}</span>
+    </div>
+  </div>
+</div>
+<div style="margin-bottom: 100px"></div>

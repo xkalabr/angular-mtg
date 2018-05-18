@@ -47,9 +47,6 @@ export class InventoryComponent implements OnInit {
 
   populateList(): void {
     this.cardService.getInventory()
-      .subscribe(cards => {
-        this.cardList = cards;
-        console.log("the list", this.cardList);
-      });
+      .subscribe(cards => this.cardList = cards);
   }
 }
