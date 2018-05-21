@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { CardSingle } from '../cardSingle';
 import { CardCondition } from '../condition';
 import { CardService } from '../card.service';
+import { InventoryComponent } from '../inventory/inventory.component';
 
 @Component({
   selector: 'app-inventory-form',
@@ -9,8 +10,9 @@ import { CardService } from '../card.service';
   styleUrls: ['./inventory-form.component.css']
 })
 export class InventoryFormComponent implements OnInit {
-  
+
   @Input() entry: CardSingle;
+  @Input() invList: InventoryComponent;
   
   conditions: CardCondition[];
 
@@ -46,7 +48,7 @@ export class InventoryFormComponent implements OnInit {
       this.cardService.editCard(this.entry)
         .subscribe();
     }
-    this.doCancel();
+    setTimeout(this.invList.populateList(),400);
   }
 
   getConditions(): void {

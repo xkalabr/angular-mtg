@@ -23,6 +23,7 @@ export class SearchComponent implements OnInit {
   }
 
   listSet(): void {
+    this.searchList = [];
     this.cardService.getSetList(this.selectedSet)
       .subscribe(setList => this.setList = setList);
   }
@@ -37,6 +38,7 @@ export class SearchComponent implements OnInit {
   }
 
   searchCards(): void {
+    this.listClear();
     this.cardService.search(this.searchterm)
       .subscribe(searchList => this.searchList = searchList);
   }

@@ -1,6 +1,6 @@
 <h1>Inventory List</h1>
 <input type=button value="Refresh" (click)="refresh()">
-<h2>Stock</h2>
+<h2>Stock ({{cardList['stock'].length}})</h2>
 <div *ngIf="cardList">
   <div class="row" *ngFor="let card of cardList['stock']; index as i">
     <span class="id">{{card.id}}</span>
@@ -15,7 +15,7 @@
     </span>
   </div>
 </div>
-<h2>Foil</h2>
+<h2>Foil ({{cardList['foil'].length}})</h2>
 <div *ngIf="cardList">
   <div class="row" *ngFor="let card of cardList['foil']; index as i">
     <span class="id">{{card.id}}</span>
@@ -30,7 +30,7 @@
     </span>
   </div>
 </div>
-<h2>In Decks</h2>
+<h2>In Decks ({{cardList['deck'].length}})</h2>
 <div *ngIf="cardList">
   <div class="row" *ngFor="let card of cardList['deck']; index as i">
     <span class="id">{{card.id}}</span>

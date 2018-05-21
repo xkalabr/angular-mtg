@@ -13,7 +13,7 @@ export class InventoryComponent implements OnInit {
   @Input() singleCard: CardSingle;
   @Output() singleCardChange = new EventEmitter<CardSingle>();
 
-  cardList: CardSingles;
+  cardList = {'stock': [], 'deck': [], 'foil': []};
 
   setCard(index: number, pack: string) {
     const data = this.cardList[pack][index];

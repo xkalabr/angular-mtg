@@ -15,7 +15,7 @@
   <div class="sbox">
     <h2 style="margin-left:120px">Search by Card</h2>
     <label>Card Name:
-      <input [(ngModel)]="searchterm">
+      <input [(ngModel)]="searchterm" (keyup.enter)="searchCards()">
     </label>
     <input type=button value="Go" (click)="searchCards()">
   </div>
