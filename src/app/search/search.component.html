@@ -20,7 +20,8 @@
     <input type=button value="Go" (click)="searchCards()">
   </div>
 </div>
-<div class="setlist" style="clear: both;">
+<div class="setlist" style="clear: both">
+  <span style="margin-top: 15%"> &nbsp; </span>
   <div *ngIf="setList">
     <div class="row" *ngFor="let card of setList">
       <span class="id">{{card.num}}</span>
@@ -28,6 +29,7 @@
       <span class="condition">{{card.type}}</span>
       <span class="price">{{card.price | currency}}</span>
     </div>
+    <span style="margin-bottom: 10%"> &nbsp; </span>
   </div>
   <div *ngIf="searchList">
     <div class="row" *ngFor="let card of searchList">
@@ -36,4 +38,3 @@
     </div>
   </div>
 </div>
-<div style="margin-bottom: 100px"></div>

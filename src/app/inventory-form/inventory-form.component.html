@@ -1,28 +1,30 @@
 <h2>{{addOrEdit()}} Inventory</h2>
-<label [style.visibility]="entry.id != 0 ? 'visible' : 'hidden'">ID:
-  <span>{{entry.id}}</span>
-</label>
-<label>Price:
-  <input [(ngModel)]="entry.price" [attr.size]="6">
-</label>
-<label>Condition: 
-  <select [(ngModel)]="entry.cond">
-      <option *ngFor="let cond of conditions" 
-        [value]="cond.id" 
-        [attr.selected]="entry.cond==cond.id ? true : null">
-        {{cond.val}}
-      </option>
-  </select>
-</label>
-<div class="cbox-container">
-  <label class="cbox">In Deck
-    <input [(ngModel)]="entry.indeck" type="checkbox" />
+<form (ngSubmit)="doAddOrEdit()">
+  <label [style.visibility]="entry.id != 0 ? 'visible' : 'hidden'">ID:
+    <span>{{entry.id}}</span>
   </label>
-  <label class="cbox-right">Foil
-    <input [(ngModel)]="entry.isfoil" type="checkbox" />
+  <label>Price:
+    <input class="form-control" name="price" [(ngModel)]="entry.price" [attr.size]="6">
   </label>
-</div>
-<div class="cbox-container buttons">
-  <input class="cbox" type=button value="{{addOrEdit()}}" (click)="doAddOrEdit()">
-  <input class="cbox-right" type=button value="Cancel" (click)="doCancel()">
-</div>
+  <label>Condition: 
+    <select [(ngModel)]="entry.cond" class="form-control" name="cond">
+        <option *ngFor="let cond of conditions" 
+          [value]="cond.id" 
+          [attr.selected]="entry.cond==cond.id ? true : null">
+          {{cond.val}}
+        </option>
+    </select>
+  </label>
+  <div class="cbox-container">
+    <label class="cbox">In Deck
+      <input [(ngModel)]="entry.indeck" type="checkbox" name="indeck" />
+    </label>
+    <label class="cbox-right">Foil
+      <input [(ngModel)]="entry.isfoil" type="checkbox" name="isfoil" />
+    </label>
+  </div>
+  <div class="cbox-container buttons">
+    <button type="submit" [disabled]="validateForm()">{{addOrEdit()}}</button>
+    <input class="cbox-right" type=button value="Cancel" (click)="doCancel()">
+  </div>
+</form>

@@ -3,6 +3,7 @@ import { CardSingle } from '../cardSingle';
 import { CardCondition } from '../condition';
 import { CardService } from '../card.service';
 import { InventoryComponent } from '../inventory/inventory.component';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-inventory-form',
@@ -37,6 +38,14 @@ export class InventoryFormComponent implements OnInit {
       indeck: false,
       isfoil: false
     }
+  }
+
+  validateForm(): boolean {
+    var retval = true;
+    if (this.entry.cond > 0 && this.entry.price != '') {
+      retval = false;
+    }
+    return retval;
   }
 
   doAddOrEdit(): void {
