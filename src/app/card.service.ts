@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Card } from './card';
-import { Observable, of } from 'rxjs';
+import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { CardCondition } from './condition';
 import { CardSingle } from './cardSingle';
